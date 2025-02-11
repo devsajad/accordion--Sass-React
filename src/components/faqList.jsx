@@ -3,7 +3,7 @@ import faqData from "../data/data";
 import Item from "./item";
 
 export default function FaqList() {
-  const [openItem, setOpenItem] = useState(2);
+  const [openItem, setOpenItem] = useState(null);
 
   function handleOpenItem(id) {
     setOpenItem(id);
@@ -19,12 +19,13 @@ export default function FaqList() {
         {faqData.map((item) => (
           <Item
             question={item.question}
-            answer={item.answer}
             key={item.id}
             isOpen={item.id === openItem ? true : false}
             onOpenItem={handleOpenItem}
             id={item.id}
-          />
+          >
+            {item.answer}
+          </Item>
         ))}
       </ul>
     </section>

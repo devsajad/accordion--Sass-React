@@ -1,6 +1,6 @@
-export default function Item({ question, answer, isOpen, onOpenItem, id }) {
+export default function Item({ question, isOpen, onOpenItem, id, children }) {
   return (
-    <li className="faq__item" onClick={() => onOpenItem(id)}>
+    <li className="faq__item" onClick={() => onOpenItem(isOpen ? null : id)}>
       <div className="faq__content">
         <div className={`faq__header ${isOpen ? "active" : ""}`}>
           <p className="faq__question">{question}</p>
@@ -12,7 +12,7 @@ export default function Item({ question, answer, isOpen, onOpenItem, id }) {
           />
         </div>
 
-        <p className={`faq__answer ${isOpen ? "open" : ""}`}>{answer}</p>
+        <p className={`faq__answer ${isOpen ? "open" : ""}`}>{children}</p>
       </div>
     </li>
   );
